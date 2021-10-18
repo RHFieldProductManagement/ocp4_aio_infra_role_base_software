@@ -1,2 +1,13 @@
 # ocp4_aio_infra_role_base_software
 Ansible role to setup base software for OCP AIO Playbook
+
+
+## Interface variables
+
+```yaml
+ocp4_aio_infra_role_base_software_baremetal_provider: equinix_metal
+ocp4_aio_infra_role_base_software_deploy_type: ...
+ocp4_aio_infra_role_base_software_deploy_sno: ...
+ocp4_aio_infra_role_base_software_deploy_ipi: ...
+ocp4_aio_infra_role_base_software_deploy_ocs: ...
+```
