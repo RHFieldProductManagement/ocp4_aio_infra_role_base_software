@@ -2,7 +2,7 @@
   import_tasks: common.yml
 
 - name: Install software for IPI deployments
-  import_tasks: base_software_ipi.yml
+  include_tasks: base_software_ipi.yml
   when: >-
     ocp4_aio_infra_role_base_software_deploy_type in ['ipi', 'sno']
 
