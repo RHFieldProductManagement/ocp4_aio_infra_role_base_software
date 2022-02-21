@@ -1,0 +1,9 @@
+[Unit]
+Description=Sushy Libvirt emulator
+After=syslog.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sushy-emulator --port 6230 --libvirt-uri "qemu:///system"
+StandardOutput=syslog
+StandardError=syslog

@@ -1,0 +1,35 @@
+---
+# vim: set ft=ansible:
+
+- name: Install VirtualBMC packages and dependencies
+  dnf:
+    name:
+      - edk2-ovmf
+    state: latest
+  become: true
+
+- name: prepare sushy directory
+  ansible.builtin.file:
+    path: /opt/sushy
+    state: directory
+    mode: '0755'
+
+- name: Install Sushy-tools from pip
+  ansible.builtin.pip:
+    name: sushy-tools
+
+- name: create sushy-emulator service
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/etc/systemd/system/"
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - sushy-emulator.service
+  
+- name: Enable VirtualBMC
+  ansible.builtin.systemd:
+    name: sushy-emulator
+    enabled: yes
+    state: started
