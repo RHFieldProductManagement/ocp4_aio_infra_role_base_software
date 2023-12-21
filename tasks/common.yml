@@ -112,6 +112,12 @@
     state: mounted
   when: ocp4_aio_baremetal_provider == 'packet' or ocp4_aio_baremetal_provider == 'equinix_metal'
 
+- name: create folder for ceph osd images
+  ansible.builtin.file:
+    path: /var/lib/libvirt/images/ceph
+    state: directory
+    mode: 0755
+
 - name: Enable Libvirt
   ansible.builtin.systemd:
     name: libvirtd
