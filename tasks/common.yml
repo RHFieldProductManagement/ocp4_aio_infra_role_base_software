@@ -87,7 +87,7 @@
 - name: Prepare libvirt images storage VG
   lvg:
     vg: vg.libvirt
-    pvs: /dev/nvme0n1,/dev/nvme1n1
+    pvs: /dev/nvme1n1
   when: ocp4_aio_baremetal_provider == 'packet' or ocp4_aio_baremetal_provider == 'equinix_metal'
 
 - name: Prepare libvirt images storage LV
@@ -95,7 +95,7 @@
     vg: vg.libvirt
     lv: lvimages
     size: 100%FREE
-    opts: -i 2 -I 4
+  #  opts: -i 2 -I 4
   when: ocp4_aio_baremetal_provider == 'packet' or ocp4_aio_baremetal_provider == 'equinix_metal'
 
 - name: Create filesystem on libvirt storage LV
